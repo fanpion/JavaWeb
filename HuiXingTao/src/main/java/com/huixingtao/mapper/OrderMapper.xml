@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.huixingtao.mapper.OrderMapper">
+
+		<insert id="add" parameterType="Order">
+			insert into Order1 values(null,#{shoppingerId},#{pname},now(),#{oQuality},#{oSum},'未发货')
+		</insert>
+		
+		<select id="getList" resultType="Order">
+			select * from order1
+		</select>
+		
+		<select id="getSingleList" parameterType="String" resultType="Order">
+			select * from order1 where shoppingerId = #{shoppingerId}
+		</select>
+		
+		<delete id="delete" parameterType="int">
+			delete from order1 where oID = #{oID}
+		</delete>
+		
+		<update id="modify" parameterType="int" >
+			update order1 set oSend = '已发货' where oID = #{oID}
+		</update>
+	</mapper>

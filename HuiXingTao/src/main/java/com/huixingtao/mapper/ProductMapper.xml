@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.huixingtao.mapper.ProductMapper">
+		<select id="getList" resultType="Product">
+			select * from product
+		</select>
+		
+		<select id="getByPname" parameterType="String" resultType="Product">
+			select * from product where pname like concat('%',#{name},'%')  
+		</select>
+		
+		<insert id="add" parameterType="Product">
+			insert into product values(#{pname}, #{price})
+		</insert>
+		
+		<update id="modify" parameterType="Product" >
+			update product set pname = #{newProductName} , price = #{newProductPrice} where pname = #{pname}
+		</update>
+		
+		<delete id="delete">
+			delete from product where pname = #{pname}
+		</delete>
+	</mapper>

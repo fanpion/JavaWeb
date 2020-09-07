@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.huixingtao.mapper.ShoppingerMapper">
+		<select id="get" parameterType="String" resultType="Shoppinger">
+			select * from shoppinger where shoppingerId = #{id}
+		</select>
+		<select id="setPicture" >
+			update shoppinger set shoppingerPicture = #{picturePath} where shoppingerId = #{id}
+		</select>
+		<select id="check" parameterType="String" resultType="int">
+			select count(*) from shoppinger where shoppingerId = #{id}
+		</select>
+		<insert id="add" parameterType="Shoppinger">
+			insert into shoppinger values(#{shoppingerID},#{shoppingerPassword},#{shoppingerName},null,1)
+		</insert>
+		
+		<select id="getList" resultType="Shoppinger">
+			select * from Shoppinger where lv = 1
+		</select>
+		
+		<delete id="delete">
+			delete from Shoppinger where shoppingerId = #{shoppingerId}
+		</delete>
+		
+		<update id="modify" parameterType="Shoppinger" >
+			update Shoppinger set shoppingerPassword = #{shoppingerPassword} , shoppingerName = #{shoppingerName} where shoppingerId = #{shoppingerId}
+		</update>
+	</mapper>
+	
+	
